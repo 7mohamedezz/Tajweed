@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="كراسة التجويد العملية المبسطة - مستخلصة من دورة المهندس علاء حامد، شاملة الشرح المفصل، الآيات القرآنية، وصوت الشيخ الحصري">
+    <meta name="keywords" content="تجويد، قرآن، علاء حامد، الحصري، أحكام التجويد، مخارج الحروف، صفات الحروف">
+    <meta name="author" content="م. علاء حامد">
+    <meta property="og:title" content="كراسة تعلم التجويد المبسط - م. علاء حامد">
+    <meta property="og:description" content="كراسة التجويد العملية المبسطة - شاملة الشرح المفصل، الآيات، وصوت الشيخ الحصري">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
     <title>كراسة تعلم التجويد المبسط - م. علاء حامد</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
@@ -15,6 +22,23 @@
             --card-bg: #FFFFFF;
             --highlight: #E74C3C; /* لون تمييز الحروف */
             --ayah-color: #16A085; /* لون الآيات القرآنية */
+            --focus-outline: 3px solid #3498db;
+        }
+
+        /* Skip to content link for accessibility */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--secondary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
         }
 
         body {
@@ -36,12 +60,12 @@
 
         header h1 {
             margin: 0;
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
         }
 
         header p {
             margin-top: 10px;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             opacity: 0.9;
         }
 
@@ -64,7 +88,7 @@
             color: var(--primary);
             border: none;
             padding: 12px 20px;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             font-family: inherit;
             font-weight: 700;
             border-radius: 8px;
@@ -72,7 +96,8 @@
             transition: all 0.3s ease;
         }
 
-        .tab-btn:hover {
+        .tab-btn:hover,
+        .tab-btn:focus {
             background-color: #95A5A6;
         }
 
@@ -214,27 +239,75 @@
             max-width: 250px;
         }
         
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            .tabs {
+                display: none;
+            }
+            .page {
+                display: block !important;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            audio {
+                display: none;
+            }
+            header {
+                background-color: transparent;
+                color: black;
+                box-shadow: none;
+            }
+        }
+
+        /* Responsive improvements */
+        @media screen and (max-width: 768px) {
+            .ayah-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            audio {
+                width: 100%;
+            }
+            table {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Better focus visibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
 
-    <header>
+    <!-- Skip to content link for screen readers -->
+    <a href="#main-content" class="skip-to-content">الانتقال إلى المحتوى الرئيسي</a>
+
+    <header role="banner">
         <h1>كراسة التجويد العملية المبسطة</h1>
         <p>مستخلصة من دورة المهندس علاء حامد - شاملة الشرح المفصل، الآيات، وصوت الشيخ الحصري</p>
     </header>
 
-    <div class="container">
+    <main id="main-content" role="main">
+        <div class="container">
         
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'page1')">مخارج وصفات الحروف</button>
-            <button class="tab-btn" onclick="openTab(event, 'page2')">النون والميم المشددتين</button>
-            <button class="tab-btn" onclick="openTab(event, 'page3')">النون الساكنة والتنوين</button>
-            <button class="tab-btn" onclick="openTab(event, 'page4')">الميم الساكنة</button>
-            <button class="tab-btn" onclick="openTab(event, 'page5')">أحكام المدود</button>
+        <nav class="tabs" role="tablist" aria-label="أقسام التجويد">
+            <button class="tab-btn active" onclick="openTab(event, 'page1')" role="tab" aria-selected="true" aria-controls="page1" id="tab1">مخارج وصفات الحروف</button>
+            <button class="tab-btn" onclick="openTab(event, 'page2')" role="tab" aria-selected="false" aria-controls="page2" id="tab2">النون والميم المشددتين</button>
+            <button class="tab-btn" onclick="openTab(event, 'page3')" role="tab" aria-selected="false" aria-controls="page3" id="tab3">النون الساكنة والتنوين</button>
+            <button class="tab-btn" onclick="openTab(event, 'page4')" role="tab" aria-selected="false" aria-controls="page4" id="tab4">الميم الساكنة</button>
+            <button class="tab-btn" onclick="openTab(event, 'page5')" role="tab" aria-selected="false" aria-controls="page5" id="tab5">أحكام المدود</button>
         </div>
 
         <!-- الصفحة الأولى: صفات الحروف -->
-        <div id="page1" class="page active">
+        <div id="page1" class="page active" role="tabpanel" aria-labelledby="tab1">
             <h2>مخارج وصفات الحروف</h2>
             
             <h3>1. التفخيم والترقيق (الاستعلاء والاستفال)</h3>
@@ -244,53 +317,53 @@
             <div class="rule-box">
                 حروف مفخمة دائماً (7 حروف): <strong>خُصَّ ضَغْطٍ قِظْ</strong>
                 <ul class="example-list">
-                    <li>حرف الخاء: الكلمة <span class="quran-word">(<span class="hl">خَ</span>لَقَ)</span>
+                    <li>حرف الخاء: الكلمة <span class="quran-word" lang="ar">(<span class="hl">خَ</span>لَقَ)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ﴾</span>
                             <span class="surah-info">[سورة العلق: 2]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/096002.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/096002.mp3"></audio>
                         </div>
                     </li>
-                    <li>حرف الصاد: الكلمة <span class="quran-word">(ال<span class="hl">صَّ</span>مَدُ)</span>
+                    <li>حرف الصاد: الكلمة <span class="quran-word" lang="ar">(ال<span class="hl">صَّ</span>مَدُ)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿اللَّهُ الصَّمَدُ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿اللَّهُ الصَّمَدُ﴾</span>
                             <span class="surah-info">[سورة الإخلاص: 2]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/112002.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/112002.mp3"></audio>
                         </div>
                     </li>
-                    <li>حرف الضاد: الكلمة <span class="quran-word">(<span class="hl">ضَ</span>بْحًا)</span>
+                    <li>حرف الضاد: الكلمة <span class="quran-word" lang="ar">(<span class="hl">ضَ</span>بْحًا)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿وَالْعَادِيَاتِ ضَبْحًا﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿وَالْعَادِيَاتِ ضَبْحًا﴾</span>
                             <span class="surah-info">[سورة العاديات: 1]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/100001.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/100001.mp3"></audio>
                         </div>
                     </li>
-                    <li>حرف الغين: الكلمة <span class="quran-word">(<span class="hl">غَ</span>اسِقٍ)</span>
+                    <li>حرف الغين: الكلمة <span class="quran-word" lang="ar">(<span class="hl">غَ</span>اسِقٍ)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ﴾</span>
                             <span class="surah-info">[سورة الفلق: 3]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/113003.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/113003.mp3"></audio>
                         </div>
                     </li>
-                    <li>حرف الطاء: الكلمة <span class="quran-word">(أَ<span class="hl">طْ</span>عَمَهُم)</span>
+                    <li>حرف الطاء: الكلمة <span class="quran-word" lang="ar">(أَ<span class="hl">طْ</span>عَمَهُم)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
                             <span class="surah-info">[سورة قريش: 4]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
                         </div>
                     </li>
-                    <li>حرف القاف: الكلمة <span class="quran-word">(<span class="hl">قُ</span>لْ)</span>
+                    <li>حرف القاف: الكلمة <span class="quran-word" lang="ar">(<span class="hl">قُ</span>لْ)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ﴾</span>
                             <span class="surah-info">[سورة الناس: 1]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/114001.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/114001.mp3"></audio>
                         </div>
                     </li>
-                    <li>حرف الظاء: الكلمة <span class="quran-word">(يَ<span class="hl">ظُ</span>نُّ)</span>
+                    <li>حرف الظاء: الكلمة <span class="quran-word" lang="ar">(يَ<span class="hl">ظُ</span>نُّ)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿أَلَا يَظُنُّ أُولَٰئِكَ أَنَّهُم مَّبْعُوثُونَ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿أَلَا يَظُنُّ أُولَٰئِكَ أَنَّهُم مَّبْعُوثُونَ﴾</span>
                             <span class="surah-info">[سورة المطففين: 4]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/083004.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/083004.mp3"></audio>
                         </div>
                     </li>
                 </ul>
@@ -299,32 +372,32 @@
             <h4>حالات اللام والراء المخصوصة:</h4>
             <p>اللام ترقق دائماً إلا في لفظ الجلالة بشروط، والراء لها حالات بناءً على تشكيلها أو تشكيل ما قبلها.</p>
             <ul class="example-list">
-                <li><strong>اللام في لفظ الجلالة مفخمة (قبلها فتح/ضم):</strong> <span class="quran-word">(نَارُ ا<span class="hl">للَّ</span>هِ)</span>
+                <li><strong>اللام في لفظ الجلالة مفخمة (قبلها فتح/ضم):</strong> <span class="quran-word" lang="ar">(نَارُ ا<span class="hl">للَّ</span>هِ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿نَارُ اللَّهِ الْمُوقَدَةُ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿نَارُ اللَّهِ الْمُوقَدَةُ﴾</span>
                         <span class="surah-info">[سورة الهمزة: 6]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/104006.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/104006.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>اللام في لفظ الجلالة مرققة (قبلها كسر):</strong> <span class="quran-word">(بِسْمِ ا<span class="hl">للَّ</span>هِ)</span>
+                <li><strong>اللام في لفظ الجلالة مرققة (قبلها كسر):</strong> <span class="quran-word" lang="ar">(بِسْمِ ا<span class="hl">للَّ</span>هِ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ﴾</span>
                         <span class="surah-info">[سورة الفاتحة: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/001001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/001001.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>الراء مفخمة (مفتوحة/مضمومة/قبلها فتح):</strong> <span class="quran-word">(<span class="hl">رَ</span>بَّكَ)</span>
+                <li><strong>الراء مفخمة (مفتوحة/مضمومة/قبلها فتح):</strong> <span class="quran-word" lang="ar">(<span class="hl">رَ</span>بَّكَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿فَصَلِّ لِرَبِّكَ وَانْحَرْ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿فَصَلِّ لِرَبِّكَ وَانْحَرْ﴾</span>
                         <span class="surah-info">[سورة الكوثر: 2]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/108002.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/108002.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>الراء مرققة (مكسورة/قبلها كسر):</strong> <span class="quran-word">(فِ<span class="hl">رْ</span>عَوْنَ)</span>
+                <li><strong>الراء مرققة (مكسورة/قبلها كسر):</strong> <span class="quran-word" lang="ar">(فِ<span class="hl">رْ</span>عَوْنَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَفِرْعَوْنَ ذِي الْأَوْتَادِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَفِرْعَوْنَ ذِي الْأَوْتَادِ﴾</span>
                         <span class="surah-info">[سورة الفجر: 10]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/089010.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/089010.mp3"></audio>
                     </div>
                 </li>
             </ul>
@@ -332,25 +405,25 @@
             <h3>2. الحروف اللثوية</h3>
             <p>يجب إخراج طرف اللسان فيها حتى لا يتغير المعنى، وهي: <span class="badge">ذ</span> <span class="badge">ث</span> <span class="badge">ظ</span>.</p>
             <ul class="example-list">
-                <li>حرف الذال: الكلمة <span class="quran-word">(الَّ<span class="hl">ذِ</span>ي)</span>
+                <li>حرف الذال: الكلمة <span class="quran-word" lang="ar">(الَّ<span class="hl">ذِ</span>ي)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ﴾</span>
                         <span class="surah-info">[سورة الناس: 5]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/114005.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/114005.mp3"></audio>
                     </div>
                 </li>
-                <li>حرف الثاء: الكلمة <span class="quran-word">(الْكَوْ<span class="hl">ثَ</span>رَ)</span>
+                <li>حرف الثاء: الكلمة <span class="quran-word" lang="ar">(الْكَوْ<span class="hl">ثَ</span>رَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ﴾</span>
                         <span class="surah-info">[سورة الكوثر: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/108001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/108001.mp3"></audio>
                     </div>
                 </li>
-                <li>حرف الظاء: الكلمة <span class="quran-word">(الْعَ<span class="hl">ظِ</span>يمِ)</span>
+                <li>حرف الظاء: الكلمة <span class="quran-word" lang="ar">(الْعَ<span class="hl">ظِ</span>يمِ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿عَنِ النَّبَإِ الْعَظِيمِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿عَنِ النَّبَإِ الْعَظِيمِ﴾</span>
                         <span class="surah-info">[سورة النبأ: 2]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/078002.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/078002.mp3"></audio>
                     </div>
                 </li>
             </ul>
@@ -358,46 +431,46 @@
             <h3>3. القلقلة</h3>
             <p>هي اضطراب وانفجار في المخرج للحرف الساكن لأنه ميت فيجب إحياؤه ليُسمع. حروف القلقلة (5 حروف): <strong>قُطْبُ جَدّ</strong>.</p>
             <ul class="example-list">
-                <li><strong>حرف القاف (قلقلة صغرى - وسط الكلمة):</strong> <span class="quran-word">(ا<span class="hl">قْ</span>رَأْ)</span>
+                <li><strong>حرف القاف (قلقلة صغرى - وسط الكلمة):</strong> <span class="quran-word" lang="ar">(ا<span class="hl">قْ</span>رَأْ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾</span>
                         <span class="surah-info">[سورة العلق: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/096001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/096001.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>حرف الطاء (قلقلة صغرى):</strong> <span class="quran-word">(أَ<span class="hl">طْ</span>عَمَهُم)</span>
+                <li><strong>حرف الطاء (قلقلة صغرى):</strong> <span class="quran-word" lang="ar">(أَ<span class="hl">طْ</span>عَمَهُم)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
                         <span class="surah-info">[سورة قريش: 4]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>حرف الدال (قلقلة صغرى):</strong> <span class="quran-word">(يَ<span class="hl">دْ</span>خُلُونَ)</span>
+                <li><strong>حرف الدال (قلقلة صغرى):</strong> <span class="quran-word" lang="ar">(يَ<span class="hl">دْ</span>خُلُونَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا﴾</span>
                         <span class="surah-info">[سورة النصر: 2]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/110002.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/110002.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>حرف الجيم (قلقلة صغرى):</strong> <span class="quran-word">(يَ<span class="hl">جْ</span>عَلْ)</span>
+                <li><strong>حرف الجيم (قلقلة صغرى):</strong> <span class="quran-word" lang="ar">(يَ<span class="hl">جْ</span>عَلْ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ﴾</span>
                         <span class="surah-info">[سورة الفيل: 2]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/105002.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/105002.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>حرف الباء (قلقلة وسطى - آخر الكلمة):</strong> <span class="quran-word">(وَقَ<span class="hl">بْ</span>)</span>
+                <li><strong>حرف الباء (قلقلة وسطى - آخر الكلمة):</strong> <span class="quran-word" lang="ar">(وَقَ<span class="hl">بْ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ﴾</span>
                         <span class="surah-info">[سورة الفلق: 3]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/113003.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/113003.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>قلقلة كبرى (مشدد موقوف عليه):</strong> <span class="quran-word">(وَتَ<span class="hl">بَّ</span>)</span>
+                <li><strong>قلقلة كبرى (مشدد موقوف عليه):</strong> <span class="quran-word" lang="ar">(وَتَ<span class="hl">بَّ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ﴾</span>
                         <span class="surah-info">[سورة المسد: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/111001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/111001.mp3"></audio>
                     </div>
                 </li>
             </ul>
@@ -405,71 +478,71 @@
             <h3>4. الهمس والجهر</h3>
             <p><strong>الهمس:</strong> جريان النفس عند نطق الحرف. حروفه: <strong>فَحَثَّهُ شَخْصٌ سَكَتَ</strong>.</p>
             <ul class="example-list">
-                <li>حرف التاء: <span class="quran-word">(كُوِّرَ<span class="hl">تْ</span>)</span>
+                <li>حرف التاء: <span class="quran-word" lang="ar">(كُوِّرَ<span class="hl">تْ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿إِذَا الشَّمْسُ كُوِّرَتْ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿إِذَا الشَّمْسُ كُوِّرَتْ﴾</span>
                         <span class="surah-info">[سورة التكوير: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/081001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/081001.mp3"></audio>
                     </div>
                 </li>
-                <li>حرف الكاف: <span class="quran-word">(ذِ<span class="hl">كْ</span>رَكَ)</span>
+                <li>حرف الكاف: <span class="quran-word" lang="ar">(ذِ<span class="hl">كْ</span>رَكَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَرَفَعْنَا لَكَ ذِكْرَكَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَرَفَعْنَا لَكَ ذِكْرَكَ﴾</span>
                         <span class="surah-info">[سورة الشرح: 4]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/094004.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/094004.mp3"></audio>
                     </div>
                 </li>
-                <li>حرف السين: <span class="quran-word">(مَ<span class="hl">سَ</span>دٍ)</span>
+                <li>حرف السين: <span class="quran-word" lang="ar">(مَ<span class="hl">سَ</span>دٍ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ﴾</span>
                         <span class="surah-info">[سورة المسد: 5]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/111005.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/111005.mp3"></audio>
                     </div>
                 </li>
             </ul>
         </div>
 
         <!-- الصفحة الثانية: النون والميم المشددتين -->
-        <div id="page2" class="page">
+        <div id="page2" class="page" role="tabpanel" aria-labelledby="tab2">
             <h2>أحكام النون والميم المشددتين</h2>
             <p>هذا أسهل حكم في التجويد وثابت دائماً.</p>
             <div class="rule-box">
                 أي حرف (نّ) أو (مّ) عليه شدة في القرآن، يجب عمل <strong>غُنة بمقدار حركتين</strong>. الغنة صوت يخرج من الخيشوم.
             </div>
             <ul class="example-list">
-                <li><strong>النون المشددة:</strong> <span class="quran-word">(ال<span class="hl">نَّ</span>اسِ)</span>
+                <li><strong>النون المشددة:</strong> <span class="quran-word" lang="ar">(ال<span class="hl">نَّ</span>اسِ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿مَلِكِ النَّاسِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿مَلِكِ النَّاسِ﴾</span>
                         <span class="surah-info">[سورة الناس: 2]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/114002.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/114002.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>النون المشددة:</strong> <span class="quran-word">(إِ<span class="hl">نَّ</span>ا)</span>
+                <li><strong>النون المشددة:</strong> <span class="quran-word" lang="ar">(إِ<span class="hl">نَّ</span>ا)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ﴾</span>
                         <span class="surah-info">[سورة الكوثر: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/108001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/108001.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>الميم المشددة:</strong> <span class="quran-word">(فَأَ<span class="hl">مَّ</span>ا)</span>
+                <li><strong>الميم المشددة:</strong> <span class="quran-word" lang="ar">(فَأَ<span class="hl">مَّ</span>ا)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿فَأَمَّا مَن ثَقُلَتْ مَوَازِينُهُ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿فَأَمَّا مَن ثَقُلَتْ مَوَازِينُهُ﴾</span>
                         <span class="surah-info">[سورة القارعة: 6]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/101006.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/101006.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>الميم المشددة:</strong> <span class="quran-word">(حَ<span class="hl">مَّ</span>الَةَ)</span>
+                <li><strong>الميم المشددة:</strong> <span class="quran-word" lang="ar">(حَ<span class="hl">مَّ</span>الَةَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَامْرَأَتُهُ حَمَّالَةَ الْحَطَبِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَامْرَأَتُهُ حَمَّالَةَ الْحَطَبِ﴾</span>
                         <span class="surah-info">[سورة المسد: 4]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/111004.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/111004.mp3"></audio>
                     </div>
                 </li>
             </ul>
         </div>
 
         <!-- الصفحة الثالثة: النون الساكنة والتنوين -->
-        <div id="page3" class="page">
+        <div id="page3" class="page" role="tabpanel" aria-labelledby="tab3">
             <h2>أحكام النون الساكنة والتنوين</h2>
             <p>التنوين صوتياً هو نون ساكنة، ولذلك يأخذان نفس الأحكام. الحكم يُحدد بناءً على <strong>الحرف الذي يأتي بعدهما مباشرة</strong>.</p>
             
@@ -483,46 +556,46 @@
                     <td>
                         <p>لأنها حروف حلقية بعيدة المخرج، ننطق النون أو التنوين واضحة تماماً.</p>
                         <ul class="example-list">
-                            <li><strong>الهمزة (ء):</strong> <span class="quran-word">(مِ<span class="hl">نْ أَ</span>لْفِ)</span>
+                            <li><strong>الهمزة (ء):</strong> <span class="quran-word" lang="ar">(مِ<span class="hl">نْ أَ</span>لْفِ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿خَيْرٌ مِّنْ أَلْفِ شَهْرٍ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿خَيْرٌ مِّنْ أَلْفِ شَهْرٍ﴾</span>
                                     <span class="surah-info">[سورة القدر: 3]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/097003.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/097003.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>الهاء (هـ):</strong> <span class="quran-word">(عَ<span class="hl">نْهُ</span>)</span>
+                            <li><strong>الهاء (هـ):</strong> <span class="quran-word" lang="ar">(عَ<span class="hl">نْهُ</span>)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ﴾</span>
                                     <span class="surah-info">[سورة المسد: 2]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/111002.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/111002.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>العين (ع):</strong> <span class="quran-word">(أَ<span class="hl">نْعَ</span>مْتَ)</span>
+                            <li><strong>العين (ع):</strong> <span class="quran-word" lang="ar">(أَ<span class="hl">نْعَ</span>مْتَ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ﴾</span>
                                     <span class="surah-info">[سورة الفاتحة: 7]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/001007.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/001007.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>الحاء (ح):</strong> <span class="quran-word">(نَار<span class="hl">ٌ حَ</span>امِيَةٌ)</span>
+                            <li><strong>الحاء (ح):</strong> <span class="quran-word" lang="ar">(نَار<span class="hl">ٌ حَ</span>امِيَةٌ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿نَارٌ حَامِيَةٌ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿نَارٌ حَامِيَةٌ﴾</span>
                                     <span class="surah-info">[سورة القارعة: 11]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/101011.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/101011.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>الغين (غ):</strong> <span class="quran-word">(أَجْر<span class="hl">ٌ غَ</span>يْرُ)</span>
+                            <li><strong>الغين (غ):</strong> <span class="quran-word" lang="ar">(أَجْر<span class="hl">ٌ غَ</span>يْرُ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ﴾</span>
                                     <span class="surah-info">[سورة التين: 6]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/095006.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/095006.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>الخاء (خ):</strong> <span class="quran-word">(مِ<span class="hl">نْ خَ</span>وْفٍ)</span>
+                            <li><strong>الخاء (خ):</strong> <span class="quran-word" lang="ar">(مِ<span class="hl">نْ خَ</span>وْفٍ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿وَآمَنَهُم مِّنْ خَوْفٍ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿وَآمَنَهُم مِّنْ خَوْفٍ﴾</span>
                                     <span class="surah-info">[سورة قريش: 4]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
                                 </div>
                             </li>
                         </ul>
@@ -533,39 +606,39 @@
                     <td>
                         <p>لأنها قريبة المخرج، ندخل الحرفين في بعضهما <strong>(يرملون)</strong>.</p>
                         <ul class="example-list">
-                            <li><strong>بغنة (ي):</strong> <span class="quran-word">(مَ<span class="hl">ن يَ</span>عْمَلْ)</span>
+                            <li><strong>بغنة (ي):</strong> <span class="quran-word" lang="ar">(مَ<span class="hl">ن يَ</span>عْمَلْ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ﴾</span>
                                     <span class="surah-info">[سورة الزلزلة: 7]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/099007.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/099007.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>بغنة (و):</strong> <span class="quran-word">(لَهَب<span class="hl">ٍ وَ</span>تَبَّ)</span>
+                            <li><strong>بغنة (و):</strong> <span class="quran-word" lang="ar">(لَهَب<span class="hl">ٍ وَ</span>تَبَّ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ﴾</span>
                                     <span class="surah-info">[سورة المسد: 1]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/111001.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/111001.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>بغنة (م):</strong> <span class="quran-word">(حَبْل<span class="hl">ٌ مِّ</span>ن)</span>
+                            <li><strong>بغنة (م):</strong> <span class="quran-word" lang="ar">(حَبْل<span class="hl">ٌ مِّ</span>ن)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ﴾</span>
                                     <span class="surah-info">[سورة المسد: 5]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/111005.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/111005.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>بدون غنة (ل):</strong> <span class="quran-word">(وَيْل<span class="hl">ٌ لِّ</span>كُلِّ)</span>
+                            <li><strong>بدون غنة (ل):</strong> <span class="quran-word" lang="ar">(وَيْل<span class="hl">ٌ لِّ</span>كُلِّ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ﴾</span>
                                     <span class="surah-info">[سورة الهمزة: 1]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/104001.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/104001.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>بدون غنة (ر):</strong> <span class="quran-word">(مِ<span class="hl">ن رَّ</span>بِّهِم)</span>
+                            <li><strong>بدون غنة (ر):</strong> <span class="quran-word" lang="ar">(مِ<span class="hl">ن رَّ</span>بِّهِم)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ﴾</span>
                                     <span class="surah-info">[سورة القدر: 4]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/097004.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/097004.mp3"></audio>
                                 </div>
                             </li>
                         </ul>
@@ -576,18 +649,18 @@
                     <td>
                         <p>نقلب النون إلى ميم مخفاة بغنة حركتين لتسهيل النطق.</p>
                         <ul class="example-list">
-                            <li><strong>مع النون:</strong> <span class="quran-word">(لَيُ<span class="hl">نبَ</span>ذَنَّ)</span>
+                            <li><strong>مع النون:</strong> <span class="quran-word" lang="ar">(لَيُ<span class="hl">نبَ</span>ذَنَّ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿كَلَّا لَيُنبَذَنَّ فِي الْحُطَمَةِ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿كَلَّا لَيُنبَذَنَّ فِي الْحُطَمَةِ﴾</span>
                                     <span class="surah-info">[سورة الهمزة: 4]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/104004.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/104004.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>مع التنوين:</strong> <span class="quran-word">(لَنَسْفَعَ<span class="hl">اً بِ</span>النَّاصِيَة)</span>
+                            <li><strong>مع التنوين:</strong> <span class="quran-word" lang="ar">(لَنَسْفَعَ<span class="hl">اً بِ</span>النَّاصِيَة)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿كَلَّا لَئِن لَّمْ يَنتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿كَلَّا لَئِن لَّمْ يَنتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ﴾</span>
                                     <span class="surah-info">[سورة العلق: 15]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/096015.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/096015.mp3"></audio>
                                 </div>
                             </li>
                         </ul>
@@ -598,25 +671,25 @@
                     <td>
                         <p>ننطق غنة حركتين فقط، مع تجهيز شكل الفم على قالب الحرف القادم.</p>
                         <ul class="example-list">
-                            <li><strong>حرف الشين:</strong> <span class="quran-word">(مِ<span class="hl">ن شَ</span>رِّ)</span>
+                            <li><strong>حرف الشين:</strong> <span class="quran-word" lang="ar">(مِ<span class="hl">ن شَ</span>رِّ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ﴾</span>
                                     <span class="surah-info">[سورة الفلق: 3]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/113003.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/113003.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>حرف الجيم:</strong> <span class="quran-word">(مِ<span class="hl">ن جُ</span>وعٍ)</span>
+                            <li><strong>حرف الجيم:</strong> <span class="quran-word" lang="ar">(مِ<span class="hl">ن جُ</span>وعٍ)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
                                     <span class="surah-info">[سورة قريش: 4]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
                                 </div>
                             </li>
-                            <li><strong>حرف الصاد (إخفاء مفخم):</strong> <span class="quran-word">(عَ<span class="hl">ن صَ</span>لَاتِهِم)</span>
+                            <li><strong>حرف الصاد (إخفاء مفخم):</strong> <span class="quran-word" lang="ar">(عَ<span class="hl">ن صَ</span>لَاتِهِم)</span>
                                 <div class="ayah-container">
-                                    <span class="quran-ayah">﴿الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ﴾</span>
+                                    <span class="quran-ayah" lang="ar">﴿الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ﴾</span>
                                     <span class="surah-info">[سورة الماعون: 5]</span>
-                                    <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/107005.mp3"></audio>
+                                    <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/107005.mp3"></audio>
                                 </div>
                             </li>
                         </ul>
@@ -626,7 +699,7 @@
         </div>
 
         <!-- الصفحة الرابعة: الميم الساكنة -->
-        <div id="page4" class="page">
+        <div id="page4" class="page" role="tabpanel" aria-labelledby="tab4">
             <h2>أحكام الميم الساكنة</h2>
             <p>تتعلق بحرف الميم الذي ليس عليه تشكيل (ساكن) والحرف الذي يليه، ولها 3 أحكام فقط:</p>
 
@@ -634,11 +707,11 @@
                 <strong>1. إدغام (مثلين صغير) - ميم بعدها ميم:</strong><br>
                 تدمج الميمان وتُنطق ميم واحدة مشددة مع غنة حركتين.
                 <ul class="example-list">
-                    <li>المثال: <span class="quran-word">(أَطْعَمَهُ<span class="hl">م مِّ</span>ن)</span>
+                    <li>المثال: <span class="quran-word" lang="ar">(أَطْعَمَهُ<span class="hl">م مِّ</span>ن)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿الَّذِي أَطْعَمَهُم مِّن جُوعٍ﴾</span>
                             <span class="surah-info">[سورة قريش: 4]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
                         </div>
                     </li>
                 </ul>
@@ -648,11 +721,11 @@
                 <strong>2. الإخفاء الشفوي - ميم بعدها باء:</strong><br>
                 إخفاء الميم مع غنة حركتين (مع ترك فرجة يسيرة جداً أو تلامس الشفتين بدون كزّ).
                 <ul class="example-list">
-                    <li>المثال: <span class="quran-word">(تَرْمِيهِ<span class="hl">م بِ</span>حِجَارَةٍ)</span>
+                    <li>المثال: <span class="quran-word" lang="ar">(تَرْمِيهِ<span class="hl">م بِ</span>حِجَارَةٍ)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ﴾</span>
                             <span class="surah-info">[سورة الفيل: 4]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/105004.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/105004.mp3"></audio>
                         </div>
                     </li>
                 </ul>
@@ -662,18 +735,18 @@
                 <strong>3. الإظهار الشفوي - ميم بعدها باقي الحروف:</strong><br>
                 ننطق الميم واضحة بلا غنة إضافية (خاصة مع الفاء والواو نحذر من إخفائها).
                 <ul class="example-list">
-                    <li>المثال الأول: <span class="quran-word">(أَلَ<span class="hl">مْ يَ</span>جْعَلْ)</span>
+                    <li>المثال الأول: <span class="quran-word" lang="ar">(أَلَ<span class="hl">مْ يَ</span>جْعَلْ)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ﴾</span>
                             <span class="surah-info">[سورة الفيل: 2]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/105002.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/105002.mp3"></audio>
                         </div>
                     </li>
-                    <li>المثال الثاني: <span class="quran-word">(عَلَيْهِ<span class="hl">مْ وَ</span>لَا)</span>
+                    <li>المثال الثاني: <span class="quran-word" lang="ar">(عَلَيْهِ<span class="hl">مْ وَ</span>لَا)</span>
                         <div class="ayah-container">
-                            <span class="quran-ayah">﴿غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ﴾</span>
+                            <span class="quran-ayah" lang="ar">﴿غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ﴾</span>
                             <span class="surah-info">[سورة الفاتحة: 7]</span>
-                            <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/001007.mp3"></audio>
+                            <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/001007.mp3"></audio>
                         </div>
                     </li>
                 </ul>
@@ -681,86 +754,86 @@
         </div>
 
         <!-- الصفحة الخامسة: المدود -->
-        <div id="page5" class="page">
+        <div id="page5" class="page" role="tabpanel" aria-labelledby="tab5">
             <h2>أحكام المدود</h2>
             <p>حروف المد هي: الألف (الساكنة المفتوح ما قبلها)، الواو (المضموم ما قبلها)، الياء (المكسور ما قبلها).</p>
 
             <h3>1. المد الطبيعي (الأصلي)</h3>
             <p>يمد بمقدار حركتين فقط، ولا يتوقف على سبب همز أو سكون.</p>
             <ul class="example-list">
-                <li>المثال للألف: <span class="quran-word">(وَ<span class="hl">قَا</span>لَ)</span>
+                <li>المثال للألف: <span class="quran-word" lang="ar">(وَ<span class="hl">قَا</span>لَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَقَالَ الْإِنسَانُ مَا لَهَا﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَقَالَ الْإِنسَانُ مَا لَهَا﴾</span>
                         <span class="surah-info">[سورة الزلزلة: 3]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/099003.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/099003.mp3"></audio>
                     </div>
                 </li>
-                <li>المثال للياء: <span class="quran-word">(<span class="hl">فِي</span>)</span>
+                <li>المثال للياء: <span class="quran-word" lang="ar">(<span class="hl">فِي</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ﴾</span>
                         <span class="surah-info">[سورة الناس: 5]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/114005.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/114005.mp3"></audio>
                     </div>
                 </li>
             </ul>
 
             <h3>2. المد الفرعي بسبب الهمز (المتصل والمنفصل)</h3>
             <ul class="example-list">
-                <li><strong>المد المتصل (واجب 4-5 حركات):</strong> حرف المد والهمز بكلمة واحدة. <span class="quran-word">(السَّمَ<span class="hl">اءِ</span>)</span>
+                <li><strong>المد المتصل (واجب 4-5 حركات):</strong> حرف المد والهمز بكلمة واحدة. <span class="quran-word" lang="ar">(السَّمَ<span class="hl">اءِ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَالسَّمَاءِ ذَاتِ الْبُرُوجِ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَالسَّمَاءِ ذَاتِ الْبُرُوجِ﴾</span>
                         <span class="surah-info">[سورة البروج: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/085001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/085001.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>المد المتصل (واجب 4-5 حركات):</strong> <span class="quran-word">(جِ<span class="hl">يءَ</span>)</span>
+                <li><strong>المد المتصل (واجب 4-5 حركات):</strong> <span class="quran-word" lang="ar">(جِ<span class="hl">يءَ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَجِيءَ يَوْمَئِذٍ بِجَهَنَّمَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَجِيءَ يَوْمَئِذٍ بِجَهَنَّمَ﴾</span>
                         <span class="surah-info">[سورة الفجر: 23]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/089023.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/089023.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>المد المنفصل (جائز 2 أو 4 أو 5 حركات):</strong> حرف المد في كلمة والهمز بكلمة أخرى. <span class="quran-word">(إِنَّ<span class="hl">ا أَعْ</span>طَيْنَاكَ)</span>
+                <li><strong>المد المنفصل (جائز 2 أو 4 أو 5 حركات):</strong> حرف المد في كلمة والهمز بكلمة أخرى. <span class="quran-word" lang="ar">(إِنَّ<span class="hl">ا أَعْ</span>طَيْنَاكَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ﴾</span>
                         <span class="surah-info">[سورة الكوثر: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/108001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/108001.mp3"></audio>
                     </div>
                 </li>
             </ul>
 
             <h3>3. مد الصلة (خاص بهاء الضمير بين متحركين)</h3>
             <ul class="example-list">
-                <li><strong>صلة صغرى (حركتين):</strong> ليس بعدها همز، تُنطق واو أو ياء صغيرة. <span class="quran-word">(مَالُ<span class="hl">هُ وَ</span>مَا)</span>
+                <li><strong>صلة صغرى (حركتين):</strong> ليس بعدها همز، تُنطق واو أو ياء صغيرة. <span class="quran-word" lang="ar">(مَالُ<span class="hl">هُ وَ</span>مَا)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ﴾</span>
                         <span class="surah-info">[سورة المسد: 2]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/111002.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/111002.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>صلة كبرى (4 حركات):</strong> بعدها همز قطع، تُعامل معاملة المد المنفصل. <span class="quran-word">(مَالُ<span class="hl">هُ أَ</span>خْلَدَهُ)</span>
+                <li><strong>صلة كبرى (4 حركات):</strong> بعدها همز قطع، تُعامل معاملة المد المنفصل. <span class="quran-word" lang="ar">(مَالُ<span class="hl">هُ أَ</span>خْلَدَهُ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿يَحْسَبُ أَنَّ مَالَهُ أَخْلَدَهُ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿يَحْسَبُ أَنَّ مَالَهُ أَخْلَدَهُ﴾</span>
                         <span class="surah-info">[سورة الهمزة: 3]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/104003.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/104003.mp3"></audio>
                     </div>
                 </li>
             </ul>
 
             <h3>4. المد الفرعي بسبب السكون (العارض واللازم)</h3>
             <ul class="example-list">
-                <li><strong>المد العارض للسكون (2-4-6 حركات):</strong> نقف على الكلمة فنسكن آخرها وقبل الأخير حرف مد. <span class="quran-word">(الْعَالَمِ<span class="hl">ينَ</span>)</span>
+                <li><strong>المد العارض للسكون (2-4-6 حركات):</strong> نقف على الكلمة فنسكن آخرها وقبل الأخير حرف مد. <span class="quran-word" lang="ar">(الْعَالَمِ<span class="hl">ينَ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ﴾</span>
                         <span class="surah-info">[سورة الفاتحة: 2]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/001002.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/001002.mp3"></audio>
                     </div>
                 </li>
-                <li><strong>المد اللازم (واجب 6 حركات):</strong> حرف مد بعده سكون أصلي (غالباً حرف مشدد). <span class="quran-word">(وَلَا الضَّ<span class="hl">الِّ</span>ينَ)</span>
+                <li><strong>المد اللازم (واجب 6 حركات):</strong> حرف مد بعده سكون أصلي (غالباً حرف مشدد). <span class="quran-word" lang="ar">(وَلَا الضَّ<span class="hl">الِّ</span>ينَ)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ﴾</span>
                         <span class="surah-info">[سورة الفاتحة: 7]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/001007.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/001007.mp3"></audio>
                     </div>
                 </li>
             </ul>
@@ -768,24 +841,25 @@
             <h3>5. مد اللين</h3>
             <p>واو أو ياء ساكنتين قبلهما حرف <strong>مفتوح</strong>. يمد عند الوقف فقط (2 أو 4 أو 6 حركات).</p>
             <ul class="example-list">
-                <li>المثال للياء اللينة: <span class="quran-word">(قُرَ<span class="hl">يْشٍ</span>)</span>
+                <li>المثال للياء اللينة: <span class="quran-word" lang="ar">(قُرَ<span class="hl">يْشٍ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿لِإِيلَافِ قُرَيْشٍ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿لِإِيلَافِ قُرَيْشٍ﴾</span>
                         <span class="surah-info">[سورة قريش: 1]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/106001.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/106001.mp3"></audio>
                     </div>
                 </li>
-                <li>المثال للواو اللينة: <span class="quran-word">(خَ<span class="hl">وْفٍ</span>)</span>
+                <li>المثال للواو اللينة: <span class="quran-word" lang="ar">(خَ<span class="hl">وْفٍ</span>)</span>
                     <div class="ayah-container">
-                        <span class="quran-ayah">﴿وَآمَنَهُم مِّنْ خَوْفٍ﴾</span>
+                        <span class="quran-ayah" lang="ar">﴿وَآمَنَهُم مِّنْ خَوْفٍ﴾</span>
                         <span class="surah-info">[سورة قريش: 4]</span>
-                        <audio controls preload="none" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
+                        <audio controls preload="none" loading="lazy" aria-label="تلاوة الآية الكريمة" src="https://everyayah.com/data/Husary_128kbps/106004.mp3"></audio>
                     </div>
                 </li>
             </ul>
         </div>
 
-    </div>
+        </div>
+    </main>
 
     <script>
         function openTab(evt, pageId) {
@@ -798,16 +872,55 @@
             var pages = document.getElementsByClassName("page");
             for (var i = 0; i < pages.length; i++) {
                 pages[i].classList.remove("active");
+                pages[i].setAttribute('aria-hidden', 'true');
             }
             
             var tabBtns = document.getElementsByClassName("tab-btn");
             for (var i = 0; i < tabBtns.length; i++) {
                 tabBtns[i].classList.remove("active");
+                tabBtns[i].setAttribute('aria-selected', 'false');
             }
             
             document.getElementById(pageId).classList.add("active");
+            document.getElementById(pageId).setAttribute('aria-hidden', 'false');
             evt.currentTarget.classList.add("active");
+            evt.currentTarget.setAttribute('aria-selected', 'true');
         }
+
+        // Add error handling for audio elements and keyboard navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            var audios = document.querySelectorAll('audio');
+            audios.forEach(function(audio) {
+                audio.addEventListener('error', function() {
+                    var errorMsg = document.createElement('div');
+                    errorMsg.className = 'audio-error';
+                    errorMsg.style.color = '#e74c3c';
+                    errorMsg.style.fontSize = '0.85rem';
+                    errorMsg.style.marginTop = '4px';
+                    errorMsg.textContent = 'عذراً، حدث خطأ في تحميل الصوت';
+                    this.parentNode.appendChild(errorMsg);
+                });
+            });
+
+            // Keyboard navigation for tabs
+            var tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(function(tab, index) {
+                tab.addEventListener('keydown', function(e) {
+                    var currentIndex = Array.from(tabs).indexOf(document.activeElement);
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        var nextIndex;
+                        if (e.key === 'ArrowRight') {
+                            nextIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                        } else {
+                            nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                        }
+                        tabs[nextIndex].focus();
+                        tabs[nextIndex].click();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
